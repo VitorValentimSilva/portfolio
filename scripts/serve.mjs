@@ -18,9 +18,22 @@ async function resolve(p) {
 }
 
 createServer(async (req, res) => {
-  const url = decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "") || "/";
-  const file = await resolve(path.join(root, url));
-  const target = file ?? path.join(root, "404.html");
-  res.writeHead(file ? 200 : 404, { "content-type": types[path.extname(target)] ?? "application/octet-stream" });
-  res.end(await readFile(target));
-}).listen(port, () => console.log(`http://localhost:${port}`));
+  try {
+    let url;
+    try {
+      url = decodeURIComponent(new URL(req.url, "http://x").pathname).replace(/\/$/, "") || "/";
+    } catch {
+      res.writeHead(400).end("Bad Request");
+      return;
+    }
+    const requested = path.resolve(root, `.${url}`);
+    // Nunca servir nada fora de out/ (ex.: /..%2fpackage.json).
+    const file = requested === root || requested.startsWith(root + path.sep) ? await resolve(requested) : null;
+    const target = file ?? path.join(root, "404.html");
+    res.writeHead(file ? 200 : 404, { "content-type": types[path.extname(target)] ?? "application/octet-stream" });
+    res.end(await readFile(target));
+  } catch {
+    if (!res.headersSent) res.writeHead(500);
+    res.end();
+  }
+}).listen(port, "127.0.0.1", () => console.log(`http://localhost:${port}`));

@@ -19,7 +19,7 @@ export function SiteHeader({ c, altHref }: Props) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href={homePath(c)} className="flex items-center gap-2.5 font-heading font-bold">
+        <Link href={homePath(c)} aria-label={c.person.name} className="flex items-center gap-2.5 font-heading font-bold">
           <span
             className="grid size-9 place-items-center rounded-xl bg-primary text-sm text-primary-foreground shadow-soft"
             aria-hidden="true"
@@ -33,12 +33,12 @@ export function SiteHeader({ c, altHref }: Props) {
           <ul className="flex items-center gap-1">
             {links.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
                   className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -56,7 +56,7 @@ export function SiteHeader({ c, altHref }: Props) {
           </Link>
           <ThemeToggle labels={c.ui.theme} />
           <Button asChild className="ml-1 rounded-full">
-            <a href={anchor(c, ids.contact)}>{c.nav.contact}</a>
+            <Link href={anchor(c, ids.contact)}>{c.nav.contact}</Link>
           </Button>
         </div>
       </Container>
