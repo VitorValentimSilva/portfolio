@@ -24,7 +24,7 @@ export const en: Content = {
       "Blazor",
     ],
   },
-  person: { name: "Vitor Valentim", role: "Full stack developer", location: "Brazil · remote", initials: "VV" },
+  person: { name: "Vitor Valentim", role: "Full stack developer", location: "Presidente Prudente, Brazil · remote", initials: "VV" },
   contact: {
     ...contact,
     whatsappMessage: "Hi Vitor! I saw your portfolio and would like to talk about a project.",

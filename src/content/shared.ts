@@ -1,9 +1,9 @@
 /** Dados que não mudam entre idiomas (links, stack, caminhos de imagem). */
 export const contact = {
-  // TODO(Valentim): número com DDI e DDD, só dígitos (ex.: 5519999999999). Vazio = botão escondido.
-  whatsapp: "",
-  // TODO(Valentim): e-mail profissional. Vazio = botão escondido.
-  email: "",
+  // Só dígitos, com DDI e DDD. Vazio = botão escondido.
+  whatsapp: "5518996991108",
+  // Vazio = botão escondido.
+  email: "vitor.valentim.dev@gmail.com",
   linkedin: "https://www.linkedin.com/in/vitor-valentim-desenvolvedor/",
   github: "https://github.com/VitorValentimSilva",
 };
