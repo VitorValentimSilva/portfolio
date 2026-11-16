@@ -1,4 +1,4 @@
-import { HomePage } from "@/components/home-page";
+import { HomePage } from "@/components/sections/home-page";
 import { PageFrame } from "@/components/layout/page-frame";
 import { homePath } from "@/content";
 import { en } from "@/content/en";

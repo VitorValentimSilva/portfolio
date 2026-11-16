@@ -24,7 +24,12 @@ export const pt: Content = {
       "Blazor",
     ],
   },
-  person: { name: "Vitor Valentim", role: "Desenvolvedor full stack", location: "Presidente Prudente – SP · remoto", initials: "VV" },
+  person: {
+    name: "Vitor Valentim",
+    role: "Desenvolvedor full stack",
+    location: "Presidente Prudente – SP · remoto",
+    initials: "VV",
+  },
   contact: {
     ...contact,
     whatsappMessage: "Olá, Vitor! Vi seu portfólio e quero conversar sobre um projeto.",
@@ -32,7 +37,7 @@ export const pt: Content = {
   nav: { projects: "Projetos", services: "Serviços", process: "Como trabalho", about: "Sobre", contact: "Contato" },
   ui: {
     skipToContent: "Pular para o conteúdo",
-    switchLanguage: "Ver o site em inglês",
+    switchLanguage: "EN: ver o site em inglês",
     otherLanguageLabel: "EN",
     theme: { toggle: "Tema: {mode}. Clique para trocar", light: "claro", dark: "escuro", system: "do sistema" },
     viewDemo: "Ver demo",
@@ -47,6 +52,9 @@ export const pt: Content = {
     talkWhatsapp: "Falar no WhatsApp",
     sendEmail: "Enviar e-mail",
     menu: "Menu",
+    openMenu: "Abrir menu",
+    closeMenu: "Fechar menu",
+    whatsappFab: "Conversar no WhatsApp",
     notFoundTitle: "Página não encontrada",
     notFoundText: "O endereço pode ter mudado ou não existe.",
     goHome: "Voltar ao início",
@@ -171,7 +179,8 @@ export const pt: Content = {
         slug: "landing-pages",
         name: "Landing pages para negócios locais",
         tagline: "Um template, vários negócios: clínica odontológica e restaurante",
-        audience: "Clínicas, restaurantes, consultórios e negócios locais que precisam aparecer bem no Google e no celular.",
+        audience:
+          "Clínicas, restaurantes, consultórios e negócios locais que precisam aparecer bem no Google e no celular.",
         summary:
           "Uma landing page completa (serviços, equipe, depoimentos, localização e contato pelo WhatsApp) feita como template: a mesma base virou a clínica Odonto Aurora e o restaurante Alecrim & Brasa só trocando textos, cores e ilustração. Isso deixa um site novo mais rápido e mais barato.",
         features: [
@@ -211,7 +220,10 @@ export const pt: Content = {
         title: "Entregas semanais",
         description: "Você recebe um link para testar o andamento e pode pedir ajustes a cada etapa.",
       },
-      { title: "Entrega e suporte", description: "Publico o projeto, passo os acessos e dou suporte depois da entrega." },
+      {
+        title: "Entrega e suporte",
+        description: "Publico o projeto, passo os acessos e dou suporte depois da entrega.",
+      },
     ],
   },
   skills: {

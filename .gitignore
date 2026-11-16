@@ -44,3 +44,8 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /.lighthouseci/
+
+# testes
+/playwright-report/
+/test-results/
+/.lighthouseci/

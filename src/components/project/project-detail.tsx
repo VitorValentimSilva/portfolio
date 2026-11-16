@@ -2,8 +2,8 @@ import { ArrowLeft, Check, ExternalLink, KeyRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ContactButtons } from "@/components/contact-buttons";
-import { Container } from "@/components/container";
+import { ContactButtons } from "@/components/common/contact-buttons";
+import { Container } from "@/components/common/container";
 import { GitHubIcon } from "@/components/icons/brand-icons";
 import { Button } from "@/components/ui/button";
 import { anchor, sectionIds, type Content, type Project } from "@/content";
@@ -15,7 +15,7 @@ export function ProjectDetail({ c, project: p }: { c: Content; project: Project 
         <div className="flex flex-col items-start gap-4">
           <Link
             href={anchor(c, sectionIds[c.lang].projects)}
-            className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+            className="-ml-2 inline-flex min-h-11 items-center gap-2 rounded-full px-2 text-sm font-medium text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="size-4" aria-hidden="true" />
             {c.ui.backToProjects}
@@ -33,7 +33,9 @@ export function ProjectDetail({ c, project: p }: { c: Content; project: Project 
               </Button>
             ) : (
               p.status && (
-                <span className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground">{p.status}</span>
+                <span className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground">
+                  {p.status}
+                </span>
               )
             )}
             <Button asChild size="xl" variant="outline">
@@ -52,7 +54,15 @@ export function ProjectDetail({ c, project: p }: { c: Content; project: Project 
         </div>
 
         <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border bg-muted shadow-lift">
-          <Image src={p.cover.src} alt={p.cover.alt} fill priority sizes="(min-width: 1152px) 1104px, 100vw" className="object-cover object-top" />
+          <Image
+            src={p.cover.src}
+            alt={p.cover.alt}
+            fill
+            preload
+            fetchPriority="high"
+            sizes="(min-width: 1152px) 1104px, 100vw"
+            className="object-cover object-top"
+          />
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -91,7 +101,10 @@ export function ProjectDetail({ c, project: p }: { c: Content; project: Project 
               <h2 className="mt-6 mb-3 text-lg font-bold">{c.ui.stack}</h2>
               <ul className="flex flex-wrap gap-2">
                 {p.stack.map((s) => (
-                  <li key={s} className="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground">
+                  <li
+                    key={s}
+                    className="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-secondary-foreground"
+                  >
                     {s}
                   </li>
                 ))}
@@ -110,7 +123,14 @@ export function ProjectDetail({ c, project: p }: { c: Content; project: Project 
                 <li key={img.src}>
                   <figure className="flex flex-col gap-2">
                     <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border bg-muted shadow-soft">
-                      <Image src={img.src} alt={img.alt} fill loading="lazy" sizes="(min-width: 768px) 540px, 100vw" className="object-cover object-top" />
+                      <Image
+                        src={img.src}
+                        alt=""
+                        fill
+                        loading="lazy"
+                        sizes="(min-width: 768px) 540px, 100vw"
+                        className="object-cover object-top"
+                      />
                     </div>
                     <figcaption className="text-sm text-muted-foreground">{img.alt}</figcaption>
                   </figure>
