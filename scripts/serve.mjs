@@ -29,7 +29,7 @@ function pickEncoding(header = "") {
   for (const part of String(header).split(",")) {
     const [name, ...params] = part.trim().toLowerCase().split(";");
     const qp = params.map((x) => x.trim()).find((x) => x.startsWith("q="));
-    if (name) q[name] = qp ? Number(qp.slice(2)) || 0 : 1;
+    if (name.trim()) q[name.trim()] = qp ? Number(qp.slice(2)) || 0 : 1;
   }
   const quality = (n) => q[n] ?? (q["*"] !== undefined ? q["*"] : 0);
   const [best] = ["br", "gzip"].filter((n) => quality(n) > 0).sort((a, b) => quality(b) - quality(a));
