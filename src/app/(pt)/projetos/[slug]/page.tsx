@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { PageFrame } from "@/components/layout/page-frame";
-import { ProjectDetail } from "@/components/project-detail";
+import { ProjectDetail } from "@/components/project/project-detail";
 import { projectPath } from "@/content";
 import { en } from "@/content/en";
 import { pt } from "@/content/pt";

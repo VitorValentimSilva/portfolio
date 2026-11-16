@@ -1,7 +1,7 @@
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/common/theme-provider";
 import type { Content } from "@/content";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "optional" });

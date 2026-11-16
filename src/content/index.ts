@@ -6,10 +6,11 @@ export const contents: Record<Lang, Content> = { pt, en };
 export const getContent = (lang: Lang) => contents[lang];
 
 /** URL pública: variável explícita > URL do deploy da Cloudflare Pages > localhost. */
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? process.env.CF_PAGES_URL ?? "http://localhost:3000").replace(
-  /\/$/,
-  "",
-);
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.CF_PAGES_URL ??
+  "http://localhost:3000"
+).replace(/\/$/, "");
 
 export const homePath = (c: Content) => c.base || "/";
 export const projectPath = (c: Content, slug: string) => `${c.projectsPath}/${slug}`;
@@ -26,6 +27,20 @@ export type { Content, Lang, Project } from "./types";
 
 /** Ids das seções (aparecem na URL, então ficam no idioma da página). */
 export const sectionIds = {
-  pt: { services: "servicos", projects: "projetos", process: "como-trabalho", skills: "tecnologias", about: "sobre", contact: "contato" },
-  en: { services: "services", projects: "projects", process: "process", skills: "tech", about: "about", contact: "contact" },
+  pt: {
+    services: "servicos",
+    projects: "projetos",
+    process: "como-trabalho",
+    skills: "tecnologias",
+    about: "sobre",
+    contact: "contato",
+  },
+  en: {
+    services: "services",
+    projects: "projects",
+    process: "process",
+    skills: "tech",
+    about: "about",
+    contact: "contact",
+  },
 } satisfies Record<Lang, Record<string, string>>;

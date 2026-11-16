@@ -58,6 +58,9 @@ export type Content = {
     talkWhatsapp: string;
     sendEmail: string;
     menu: string;
+    openMenu: string;
+    closeMenu: string;
+    whatsappFab: string;
     notFoundTitle: string;
     notFoundText: string;
     goHome: string;

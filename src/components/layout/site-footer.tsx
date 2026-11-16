@@ -1,4 +1,4 @@
-import { Container } from "@/components/container";
+import { Container } from "@/components/common/container";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/brand-icons";
 import type { Content } from "@/content";
 
@@ -21,7 +21,7 @@ export function SiteFooter({ c }: { c: Content }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="grid size-11 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
+            className="grid size-11 place-items-center rounded-full bg-footer-foreground/10 transition-colors hover:bg-footer-foreground/20"
           >
             <LinkedInIcon className="size-5" />
           </a>
@@ -30,7 +30,7 @@ export function SiteFooter({ c }: { c: Content }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="grid size-11 place-items-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
+            className="grid size-11 place-items-center rounded-full bg-footer-foreground/10 transition-colors hover:bg-footer-foreground/20"
           >
             <GitHubIcon className="size-5" />
           </a>

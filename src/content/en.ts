@@ -24,7 +24,12 @@ export const en: Content = {
       "Blazor",
     ],
   },
-  person: { name: "Vitor Valentim", role: "Full stack developer", location: "Presidente Prudente, Brazil · remote", initials: "VV" },
+  person: {
+    name: "Vitor Valentim",
+    role: "Full stack developer",
+    location: "Presidente Prudente, Brazil · remote",
+    initials: "VV",
+  },
   contact: {
     ...contact,
     whatsappMessage: "Hi Vitor! I saw your portfolio and would like to talk about a project.",
@@ -32,7 +37,7 @@ export const en: Content = {
   nav: { projects: "Projects", services: "Services", process: "Process", about: "About", contact: "Contact" },
   ui: {
     skipToContent: "Skip to content",
-    switchLanguage: "View the site in Portuguese",
+    switchLanguage: "PT: view the site in Portuguese",
     otherLanguageLabel: "PT",
     theme: { toggle: "Theme: {mode}. Click to change", light: "light", dark: "dark", system: "system" },
     viewDemo: "Live demo",
@@ -47,6 +52,9 @@ export const en: Content = {
     talkWhatsapp: "Message on WhatsApp",
     sendEmail: "Send an email",
     menu: "Menu",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    whatsappFab: "Chat on WhatsApp",
     notFoundTitle: "Page not found",
     notFoundText: "The address may have changed or does not exist.",
     goHome: "Back to home",
@@ -171,7 +179,8 @@ export const en: Content = {
         slug: "landing-pages",
         name: "Landing pages for local businesses",
         tagline: "One template, many businesses: a dental clinic and a restaurant",
-        audience: "Clinics, restaurants, practices and local businesses that need to look good on Google and on mobile.",
+        audience:
+          "Clinics, restaurants, practices and local businesses that need to look good on Google and on mobile.",
         summary:
           "A complete landing page (services, team, reviews, location and WhatsApp contact) built as a template: the same codebase became the Odonto Aurora clinic and the Alecrim & Brasa restaurant just by changing copy, colors and illustration. That makes a new site faster and cheaper.",
         features: [
@@ -205,10 +214,19 @@ export const en: Content = {
     title: "A simple, transparent process",
     description: "You follow every step and test the project before the final delivery.",
     steps: [
-      { title: "Discovery call", description: "I learn about your business, the problem and what needs to ship first." },
+      {
+        title: "Discovery call",
+        description: "I learn about your business, the problem and what needs to ship first.",
+      },
       { title: "Proposal", description: "Fixed scope, timeline and price, with no surprises along the way." },
-      { title: "Weekly deliveries", description: "You get a link to try the progress and can request changes at each step." },
-      { title: "Launch and support", description: "I deploy the project, hand over access and support you after launch." },
+      {
+        title: "Weekly deliveries",
+        description: "You get a link to try the progress and can request changes at each step.",
+      },
+      {
+        title: "Launch and support",
+        description: "I deploy the project, hand over access and support you after launch.",
+      },
     ],
   },
   skills: {

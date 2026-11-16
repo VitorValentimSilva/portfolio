@@ -15,7 +15,11 @@ const noop = () => () => {};
 /** Alterna claro → escuro → sistema. Só mostra o estado real depois de montar (evita divergência de hidratação). */
 export function ThemeToggle({ labels }: { labels: Content["ui"]["theme"] }) {
   const { theme, setTheme } = useTheme();
-  const mounted = useSyncExternalStore(noop, () => true, () => false);
+  const mounted = useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
+  );
   const current: Mode = mounted && order.includes(theme as Mode) ? (theme as Mode) : "system";
   const Icon = icons[current];
   const next = order[(order.indexOf(current) + 1) % order.length];

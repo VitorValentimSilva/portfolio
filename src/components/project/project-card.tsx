@@ -6,19 +6,22 @@ import { GitHubIcon } from "@/components/icons/brand-icons";
 import { Button } from "@/components/ui/button";
 import { projectPath, type Content, type Project } from "@/content";
 
-type Props = { c: Content; project: Project; priority?: boolean };
+type Props = { c: Content; project: Project };
 
-export function ProjectCard({ c, project: p, priority }: Props) {
+export function ProjectCard({ c, project: p }: Props) {
   const href = projectPath(c, p.slug);
   return (
-    <article className="group flex flex-col overflow-hidden rounded-3xl border bg-card shadow-soft transition-shadow hover:shadow-lift lg:flex-row lg:odd:flex-row-reverse">
-      <Link href={href} className="relative block aspect-[16/10] overflow-hidden bg-muted lg:w-[55%] lg:shrink-0" tabIndex={-1}>
+    <article className="reveal group flex flex-col overflow-hidden rounded-3xl border bg-card shadow-soft transition-shadow hover:shadow-lift lg:flex-row lg:odd:flex-row-reverse">
+      <Link
+        href={href}
+        className="relative block aspect-[16/10] overflow-hidden bg-muted lg:w-[55%] lg:shrink-0"
+        tabIndex={-1}
+      >
         <Image
           src={p.cover.src}
           alt={p.cover.alt}
           fill
           sizes="(min-width: 1024px) 600px, 100vw"
-          priority={priority}
           className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
         />
       </Link>
@@ -54,7 +57,11 @@ export function ProjectCard({ c, project: p, priority }: Props) {
               </a>
             </Button>
           ) : (
-            p.status && <span className="rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground">{p.status}</span>
+            p.status && (
+              <span className="rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground">
+                {p.status}
+              </span>
+            )
           )}
           <Button asChild variant="ghost" className="rounded-full">
             <a href={p.code.href} target="_blank" rel="noopener noreferrer">
