@@ -23,6 +23,19 @@ const types = {
 /** Só aceita arquivos dentro de out/ (bloqueia /..%2f e o `out.html` vizinho). */
 const inside = (p) => p.startsWith(root + path.sep);
 
+/** Escolhe br ou gzip pelo Accept-Encoding, respeitando q=0 (recusado) e a maior qualidade. */
+function pickEncoding(header = "") {
+  const q = {};
+  for (const part of String(header).split(",")) {
+    const [name, ...params] = part.trim().toLowerCase().split(";");
+    const qp = params.map((x) => x.trim()).find((x) => x.startsWith("q="));
+    if (name) q[name] = qp ? Number(qp.slice(2)) || 0 : 1;
+  }
+  const quality = (n) => q[n] ?? (q["*"] !== undefined ? q["*"] : 0);
+  const [best] = ["br", "gzip"].filter((n) => quality(n) > 0).sort((a, b) => quality(b) - quality(a));
+  return best ?? null;
+}
+
 async function resolve(p) {
   const candidates = [p, `${p}.html`, path.join(p, "index.html")];
   for (const c of candidates) {
@@ -50,10 +63,10 @@ createServer(async (req, res) => {
     let body = await readFile(target);
     const type = types[path.extname(target)] ?? "application/octet-stream";
     const headers = { "content-type": type, vary: "accept-encoding" };
-    const accepts = String(req.headers["accept-encoding"] ?? "");
     if (/^(text|application)\/|svg/.test(type)) {
-      if (/\bbr\b/.test(accepts)) [body, headers["content-encoding"]] = [brotliCompressSync(body), "br"];
-      else if (/\bgzip\b/.test(accepts)) [body, headers["content-encoding"]] = [gzipSync(body), "gzip"];
+      const encoding = pickEncoding(req.headers["accept-encoding"]);
+      if (encoding === "br") [body, headers["content-encoding"]] = [brotliCompressSync(body), "br"];
+      else if (encoding === "gzip") [body, headers["content-encoding"]] = [gzipSync(body), "gzip"];
     }
     res.writeHead(file ? 200 : 404, headers);
     res.end(body);

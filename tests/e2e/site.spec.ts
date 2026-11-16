@@ -1,9 +1,12 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-import { contents, projectPath } from "../../src/content";
+import { contents, projectPath, sectionIds } from "../../src/content";
 
 const { pt, en } = contents;
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/** Nome do botão de tema: o começo do modelo, antes de {mode}. */
+const themeButton = new RegExp(`^${escape(pt.ui.theme.toggle.split("{mode}")[0])}`);
 const pages = [
   { c: pt, path: "/" },
   { c: en, path: "/en" },
@@ -56,9 +59,9 @@ test("tema alterna entre claro e escuro", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/");
   const html = page.locator("html");
-  await page.getByRole("button", { name: /tema/i }).click();
+  await page.getByRole("button", { name: themeButton }).click();
   await expect(html).toHaveClass(/(^|\s)light(\s|$)/);
-  await page.getByRole("button", { name: /tema/i }).click();
+  await page.getByRole("button", { name: themeButton }).click();
   await expect(html).toHaveClass(/(^|\s)dark(\s|$)/);
 });
 
@@ -70,7 +73,7 @@ test("menu do celular abre e navega", async ({ page, isMobile }) => {
   await expect(dialog).toBeVisible();
   await dialog.getByRole("link", { name: pt.nav.about }).click();
   await expect(dialog).toBeHidden();
-  await expect(page).toHaveURL(/#sobre$/);
+  await expect(page).toHaveURL(new RegExp(`#${sectionIds.pt.about}$`));
 });
 
 test("links de WhatsApp levam o número e a mensagem", async ({ page }) => {

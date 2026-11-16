@@ -29,7 +29,7 @@ export function MobileMenu({ links, contact, labels }: Props) {
           <Menu aria-hidden="true" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" closeLabel={labels.close} className="w-[85vw] max-w-sm gap-0 p-0">
+      <SheetContent side="right" closeLabel={labels.close} className="w-[85vw] max-w-sm gap-0 overflow-y-auto p-0">
         <SheetHeader className="border-b p-5">
           <SheetTitle className="text-left font-heading">{labels.title}</SheetTitle>
           <SheetDescription className="text-left">{labels.description}</SheetDescription>
