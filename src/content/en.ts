@@ -189,8 +189,11 @@ export const en: Content = {
           "All content lives in a single config file",
         ],
         stack: stacks.landing,
-        cover: { src: "/projects/landing-cover.webp", alt: "Alecrim & Brasa restaurant landing page" },
-        gallery: [{ src: "/projects/landing-dark.webp", alt: "The same landing page in dark mode" }],
+        cover: { src: "/projects/clinic-cover.webp", alt: "Odonto Aurora dental clinic landing page" },
+        gallery: [
+          { src: "/projects/landing-cover.webp", alt: "Alecrim & Brasa restaurant landing page" },
+          { src: "/projects/landing-dark.webp", alt: "The restaurant in dark mode" },
+        ],
         demo: projectLinks.landing.demo ? { label: "Live demo", href: projectLinks.landing.demo } : undefined,
         code: { label: "Source code", href: projectLinks.landing.code },
         status: "Live demo coming soon",

@@ -17,8 +17,10 @@ const shots = [
   ["estoka-order", "estoka/docs/screenshots/pedido-desktop.png"],
   ["estoka-products", "estoka/docs/screenshots/produtos-desktop.png"],
   ["estoka-dark", "estoka/docs/screenshots/dashboard-desktop-escuro.png"],
-  ["landing-cover", "odonto-aurora/docs/screenshots/desktop.png"],
-  ["landing-dark", "odonto-aurora/docs/screenshots/desktop-dark.png"],
+  // Clínica: branch main do odonto-aurora. Restaurante: versão Alecrim & Brasa (branch restaurante).
+  ["clinic-cover", "odonto-aurora/docs/screenshots/desktop.png"],
+  ["landing-cover", "odonto-aurora-restaurante/docs/screenshots/desktop.png"],
+  ["landing-dark", "odonto-aurora-restaurante/docs/screenshots/desktop-dark.png"],
 ];
 
 await mkdir(out, { recursive: true });
