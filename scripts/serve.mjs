@@ -30,8 +30,9 @@ createServer(async (req, res) => {
     // Nunca servir nada fora de out/ (ex.: /..%2fpackage.json).
     const file = requested === root || requested.startsWith(root + path.sep) ? await resolve(requested) : null;
     const target = file ?? path.join(root, "404.html");
+    const body = await readFile(target);
     res.writeHead(file ? 200 : 404, { "content-type": types[path.extname(target)] ?? "application/octet-stream" });
-    res.end(await readFile(target));
+    res.end(body);
   } catch {
     if (!res.headersSent) res.writeHead(500);
     res.end();
